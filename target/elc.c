@@ -6,6 +6,7 @@
 #include <target/util.h>
 
 void target_arm(Module* module);
+void target_art(Module* module);
 void target_asmjs(Module* module);
 void target_awk(Module* module);
 void target_bef(Module* module);
@@ -73,6 +74,7 @@ typedef void (*target_func_t)(Module*);
 
 static target_func_t get_target_func(const char* ext) {
   if (!strcmp(ext, "arm")) return target_arm;
+  if (!strcmp(ext, "art")) return target_art;
   if (!strcmp(ext, "asmjs")) return target_asmjs;
   if (!strcmp(ext, "awk")) return target_awk;
   if (!strcmp(ext, "bef")) return target_bef;

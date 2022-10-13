@@ -103,6 +103,7 @@ ELC_SRCS := \
 	util.c \
 	asmjs.c \
 	arm.c \
+	art.c \
 	awk.c \
 	bef.c \
 	bf.c \
@@ -630,6 +631,10 @@ TEST_FILTER := out/8cc.c.eir.w out/elc.c.eir.w out/eli.c.eir.w out/dump_ir.c.eir
 out/24_cmp.c.eir.w out/24_cmp2.c.eir.w out/24_muldiv.c.eir.w \
 out/eof.c.eir.w out/fgets.c.eir.w out/fizzbuzz.c.eir.w out/fizzbuzz_fast.c.eir.w out/qsort.c.eir.w
 endif
+include target.mk
+
+TARGET := art
+RUNNER := tools/runart.sh
 include target.mk
 
 test: $(TEST_RESULTS)

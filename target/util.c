@@ -221,7 +221,7 @@ void emit_diff(uint32_t a, uint32_t b) {
   emit_1(a >= b ? 0 : 0xff);
 }
 
-int CHUNKED_FUNC_SIZE = 512;
+int CHUNKED_FUNC_SIZE = 1<<31;
 
 int emit_chunked_main_loop(Inst* inst,
                            void (*emit_func_prologue)(int func_id),
