@@ -176,7 +176,7 @@ static void art_emit_inst(Inst* inst) {
 
   case EXIT:
     emit_line("; op: EXIT");
-    emit_line("mov eax, 0x1");
+    emit_line("mov eax, ebx");
     emit_line("mov ebx, 0x0");
     emit_line("int 0x80");
     break;
