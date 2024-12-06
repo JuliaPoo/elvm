@@ -51,11 +51,19 @@ static void init_state_art(Data* data) {
   dec_indent();
   emit_line("_PCJMP:");
   inc_indent();
-  emit_line("pop eax");
+#ifdef WITH_AMD64
+  emit_line("pop rax");
+#else
+   emit_line("pop eax");
+#endif
   emit_line("mov eax, [JMP_TABLE + 4*edi]");
   emit_line("sub eax, 0xabad1dea");
   emit_line("jz BB0");
+#ifdef WITH_AMD64
+  emit_line("jmp rax");
+#else
   emit_line("jmp eax");
+#endif
   dec_indent();
 }
 
