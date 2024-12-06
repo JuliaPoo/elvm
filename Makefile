@@ -2,6 +2,10 @@ COMMONFLAGS := -W -Wall -W -Werror -MMD -MP -O -g -Wno-missing-field-initializer
 CFLAGS := -std=gnu99 $(COMMONFLAGS) -Wno-missing-field-initializers
 CXXFLAGS := -std=c++11 $(COMMONFLAGS)
 
+ifeq ($(WITH_AMD64),1)
+	CFLAGS += -DWITH_AMD64
+endif
+
 uname := $(shell uname)
 ifneq (,$(findstring arm,$(shell uname -m)))
 ARCH := arm
@@ -639,6 +643,8 @@ include target.mk
 
 test: $(TEST_RESULTS)
 
+clean:
+	rm -rf out
 .SUFFIXES:
 
 -include */*.d
